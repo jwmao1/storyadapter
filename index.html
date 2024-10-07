@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta and Title -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story-Adapter</title>
+
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="../css/cs.css" rel="stylesheet">
+
+    <!-- Internal Styles -->
+    <style>
+      body {
+        background: #fdfcf9 no-repeat fixed top left;
+        font-family:'DM Mono','Open Sans', sans-serif;
+      }
+      pre {
+        /* Existing styles */
+      }
+      code {
+        /* Existing styles */
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Existing header content -->
+        <div class="container">
+            <h1>Story-Adapter: A Training-free Iterative Framework</h1>
+            <br/> 
+            <br/>
+            <br/>
+            <h1> For Long Story Visualization</h1>
+            <br/> 
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        
+            <div class="details">
+                <a href="https://github.com/jwmao1" target="_blank">Jiawei Mao</a> <sup>* 1,2</sup>, 
+                <a href="https://xk-huang.github.io/" target="_blank">Xiaoke Huang</a> <sup>* 1</sup>, 
+                <a href="https://yunfeixie233.github.io/" target="_blank">Yunfei Xie</a> <sup>1</sup>, 
+                <a href="" target="_blank">Yuanqi Chang</a> <sup>2</sup>, 
+                <a href="https://thefllood.github.io/mudehui.github.io/" target="_blank">Mude Hui</a> <sup>1</sup>, 
+                <a href="https://scholar.google.com/citations?user=JHTNigYAAAAJ&hl=en" target="_blank">Bingjie Xu</a> <sup>3</sup>, 
+                <a href="https://yuyinzhou.github.io/" target="_blank">Yuyin Zhou</a> <sup>1</sup>
+            </div>
+            <div class="details">
+                <sup>1</sup><a href="https://ucsc-vlaa.github.io/" target="_blank">UC Santa Cruz</a>, 
+                <sup>2</sup><a href="https://en.hdu.edu.cn/" target="_blank">Hangzhou Dianzi University</a>, 
+                <sup>3</sup><a href="https://www.singaporetech.edu.sg/" target="_blank">Singapore Institute of Technology</a>
+            </div>
+            <div class="details"><sup>*</sup>Equal Contribution</div>
+            <div class="links">
+                <a href="https://github.com/aim-uofa/MovieDreamer" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://arxiv.org/abs/2407.16655" target="_blank">
+                    <i class="fas fa-file-alt"></i> arXiv
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container main">
+        <section class="section section-abstract">
+            <div class="add-div" style="height: 150px;">
+                <img src="images/logo2.png" height="150"/>
+            </div>
+            <h2>Abstract</h2>
+            <div class="abs">
+                Story visualization, the task of generating coherent images based on a narrative, has seen significant advancements with the emergence of text-to-image models, particularly diffusion models. However, maintaining semantic consistency, generating high-quality fine-grained interactions, and ensuring computational feasibility remain challenging, especially in long story visualization (i.e., up to 100 frames).  
+                In this work, we propose a training-free and computationally efficient framework, termed Story-Adapter, to enhance the generative capability of long stories. Specifically, we propose an iterative paradigm to refine each generated image, leveraging both the text prompt and all generated images from the previous iteration. 
+                Central to our framework is a training-free global reference cross-attention module, which aggregates all generated images from the previous iteration to preserve semantic consistency across the entire story, while minimizing computational costs with global embeddings. This iterative process progressively optimizes image generation by repeatedly incorporating text constraints, resulting in more precise and fine-grained interactions. Extensive experiments validate the superiority of Story-Adapter in improving both semantic consistency and generative capability for fine-grained interactions, particularly in long story scenarios.
+            </div>
+        </section>
+
+        <section class="section section-other">
+            <h2>Story-Adapter Architecture</h2>
+            <div class="abs">
+                Story-Adapter framework. Illustration of the proposed iterative paradigm, which consists of initialization, iterations in Story-Adapter, and implementation of Global Reference Cross-Attention (GRCA). Story-Adapter first visualizes each image only based on the text prompt of the story and uses all results as reference images for the future round. In the iterative paradigm, Story-Adapter inserts GRCA into SD. For the ith iteration of each image visualization, GRCA will aggregate the information flow of all reference images during the denoising process through cross-attention. All results from this iteration will be used as a reference image to guide the dynamic update of the story visualization in the next iteration. 
+            </div>
+            <div class="add-div">
+                <img src="images/images/architecture.jpg" style="width: 100%;"/>
+            </div>
+        </section>
+
+<!-- 修改后的 Regular-length Story Visualization 部分 -->
+        <section class="section section-other">
+            <h2>Regular-length Story Visualization</h2>
+            <div class="video-grid-6">
+                <!-- 视频 1 -->
+                <div class="video-item">
+                    <div class="video-title">Pigeon</div>
+                    <video src="images/video_regular_length/video1.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 视频 2 -->
+                <div class="video-item">
+                    <div class="video-title">Dinosaur and Traveler</div>
+                    <video src="images/video_regular_length/video2.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 视频 3 -->
+                <div class="video-item">
+                    <div class="video-title">Boy</div>
+                    <video src="images/video_regular_length/video3.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 视频 4 -->
+                <div class="video-item">
+                    <div class="video-title">Pepper</div>
+                    <video src="images/video_regular_length/video4.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 视频 5 -->
+                <div class="video-item">
+                    <div class="video-title">Girl</div>
+                    <video src="images/video_regular_length/video5.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 视频 6 -->
+                <div class="video-item">
+                    <div class="video-title">Animal Rescuer</div>
+                    <video src="images/video_regular_length/video6.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 视频 7 -->
+                <div class="video-item">
+                    <div class="video-title">City Monkey</div>
+                    <video src="images/video_regular_length/video7.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 视频 8 -->
+                <div class="video-item">
+                    <div class="video-title">Old Man and Monkey</div>
+                    <video src="images/video_regular_length/video8.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 视频 9 -->
+                <div class="video-item">
+                    <div class="video-title">The Boy's Journey</div>
+                    <video src="images/video_regular_length/video9.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 视频 10 -->
+                <div class="video-item">
+                    <div class="video-title">A Day for a Girl</div>
+                    <video src="images/video_regular_length/video10.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 视频 11 -->
+                <div class="video-item">
+                    <div class="video-title">Rain</div>
+                    <video src="images/video_regular_length/video11.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 视频 12 -->
+                <div class="video-item">
+                    <div class="video-title">Fruit</div>
+                    <video src="images/video_regular_length/video12.mp4" autoplay controls muted></video>
+                </div>
+            </div>
+        </section>
+
+        <!-- 修改后的 Long Story Visualization 部分 -->
+        <section class="section section-other">
+            <h2>Long Story Visualization</h2>
+            <div class="video-grid-5">
+                <!-- 50-length 视频 1 -->
+                <div class="video-item">
+                    <div class="video-title">Little Red Riding Hood and the Big Bad Wolf</div>
+                    <video src="images/video_long_length/50/video1.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 50-length 视频 2 -->
+                <div class="video-item">
+                    <div class="video-title">Emperor and the Nightingale</div>
+                    <video src="images/video_long_length/50/video2.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 50-length 视频 3 -->
+                <div class="video-item">
+                    <div class="video-title">Robinson Crusoe</div>
+                    <video src="images/video_long_length/50/video3.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 50-length 视频 4 -->
+                <div class="video-item">
+                    <div class="video-title">Snowman</div>
+                    <video src="images/video_long_length/50/video4.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 50-length 视频 5 -->
+                <div class="video-item">
+                    <div class="video-title">Loyal Dog</div>
+                    <video src="images/video_long_length/50/video5.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 100-length 视频 1 -->
+                <div class="video-item">
+                    <div class="video-title">The Tortoise and the Hare</div>
+                    <video src="images/video_long_length/100/long_video1.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 100-length 视频 2 -->
+                <div class="video-item">
+                    <div class="video-title">Winnie the Pooh</div>
+                    <video src="images/video_long_length/100/long_video2.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 100-length 视频 3 -->
+                <div class="video-item">
+                    <div class="video-title">Pirate</div>
+                    <video src="images/video_long_length/100/long_video3.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 100-length 视频 4 -->
+                <div class="video-item">
+                    <div class="video-title">Lonely Me</div>
+                    <video src="images/video_long_length/100/long_video4.mp4" autoplay controls muted></video>
+                </div>
+                <!-- 100-length 视频 5 -->
+                <div class="video-item">
+                    <div class="video-title">The Prince and the Princess</div>
+                    <video src="images/video_long_length/100/long_video5.mp4" autoplay controls muted></video>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section section-other">
+            <h2>Qualitative Comparison of  Different Methods</h2>
+            <div class="abs">Qualitative comparison of story visualization shows AR-LDM and StoryGen generate coherent image sequences but degrade with story length due to autoregressive errors. StoryDiffusion and Story-Adapter perform well, though StoryDiffusion struggles with subject consistency and ID image flaws due to high computation demands. Story-Adapter better meets the requirements for effective story visualization.</div>
+            <div class="add-div">
+                <img src="images/images/Qualitative Comparison of StorySalon Story.png" style="width: 100%;"/>
+            </div>
+        </section>
+
+        <section class="section section-other">
+            <h2>BibTeX</h2>
+            <p><b>
+                If you find our work helpful for your research, please consider giving a citation 📃
+              </b></p>
+            <div class="add-div">
+                <pre><code>
+                    @article{chen2023sharegpt4v,
+                      title={ShareGPT4V: Improving Large Multi-Modal Models with Better Captions},
+                      author={Chen, Lin and Li, Jisong and Dong, Xiaoyi and Zhang, Pan and He, Conghui and Wang, Jiaqi and Zhao, Feng and Lin, Dahua},
+                      journal={arXiv preprint arXiv:2311.12793},
+                      year={2023}
+                    }
+                </code></pre>
+            </div>
+        </section>
+        <section class="section section-other">
+            <h2>Acknowledgement</h2>
+            <div class="add-div">
+                <!-- Content for acknowledgement -->
+            </div>
+        </section>
+    </div>
+</body>
+</html>
