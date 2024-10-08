@@ -102,12 +102,21 @@ header .links a:hover {
 
 .section-abstract {
     /* 可以自己调整比例 */
-    width: 90%;
+    width: 60%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.section-no-border {
+    background: #ffffff;
+    box-shadow: none; /* 去掉阴影 */
+    border: none;     /* 去掉边框 */
+
 }
 
 .section-other {
     /* 可以自己调整比例 */
-    width: 90%;
+    width: 60%;
+    font-family: "Times New Roman", Times, serif;
 }
 
 .section-abstract h2, .section-abstract p {
@@ -333,15 +342,17 @@ h2 {
     padding: 20px;
     max-width: 800px;
     margin: auto;
+    text-align: left; /* 确保内容靠左对齐 */
 }
 
 pre {
     /*font-family: 'helvetica now';*/
     background: #f4f4f4;
-    padding: 15px;
+    padding: 0px;
     font-size: 100%;
     border-radius: 5px;
     overflow-x: auto;
+    text-align: left; /* 设置为左对齐 */
 }
 
 .bibtex-entry {
@@ -364,22 +375,34 @@ pre {
 }
 
 .video-item {
-    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* Align items to the top */
+    align-items: stretch; /* 使子元素拉伸以适应父容器 */
+    justify-content: flex-start; /* 保证项目靠顶部排列 */
+    padding: 0px; /* 增加内边距 */
+    border: 2px solid #e0e0e0; /* 为视频和标题区域添加方框 */
+    border-radius: 5px; /* 添加圆角 */
+    background-color: #ffffff; /* 保持背景色一致 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 可选：为方框添加阴影 */
 }
 
 .video-title {
-    margin-bottom: 20px;
-    font-size: 1em;
-    font-weight: bold;
+    margin: 0; /* 移除上下外边距以自动对齐 */
+    padding: 10px; /* 增加内边距以提供空间 */
+    width: 100%; /* 标题宽度与方框对齐 */
+    text-align: center; /* 标题居中对齐 */
+    box-sizing: border-box; /* 让内边距不影响整体宽度 */
+    font-size: 0.8em;
     height: 60px;       /* Set fixed height to accommodate two lines */
     overflow: hidden;   /* Hide overflow text if any */
+    font-family: 'Times New Roman', Times, serif; /* 设置字体为 Times New Roman */
+    font-weight: bold; /* 设置字体为粗体 */
+    color: #5c5c5c; /* 设置字体颜色为深灰色 */
 }
 
 .video-item video {
-    width: 100%;
+    width: 100%; /* 视频占满方框宽度 */
     height: auto;
+    border-top-left-radius: 5px; /* 左上角圆角 */
+    border-top-right-radius: 5px; /* 右上角圆角 */
 }
